@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
 import { PhotoEntity } from './entities/photo.entity';
+import { PositionsModule } from './positions/position.module';
+import { Position } from './positions/position.entity';
 
 @Module({
   imports: [
@@ -13,11 +15,12 @@ import { PhotoEntity } from './entities/photo.entity';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'root',
+      password: 'password',
       database: 'orga_structure',
-      entities: [UserEntity, PhotoEntity],
+      entities: [UserEntity, PhotoEntity, Position],
       synchronize: true,
     }),
+    PositionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
